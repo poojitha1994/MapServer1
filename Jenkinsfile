@@ -1,7 +1,11 @@
-Pipeline{
-agent{
-stage('step1'){
-echo "test"
-}
-}
+pipeline {
+   agent any
+  
+   stages {
+      stage('Hello') {
+         steps {
+            echo 'Hello World'
+         }
+      }
+   }
 }
