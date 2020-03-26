@@ -179,7 +179,7 @@ CMD file_pbf=$(find Data/  -name "*.osm.pbf" -printf "%f\n")
 
 #move the data files to the container
 RUN mkdir /home/renderer/src/Data
-COPY  ./Data/$file_pbf   /home/renderer/src/Data/
+ADD  ./Data/$file_pbf   /home/renderer/src/Data/
 
 
 # Start running
