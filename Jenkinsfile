@@ -6,7 +6,7 @@ pipeline {
          steps {
             echo 'Hello World'
             sh 'whoami'
-            sh 'cd /var/lib/jenkins/workspace/Test'
+            sh 'cd /var/lib/jenkins/workspace/Test/Dockerfile'
             sh 'ls /var/lib/jenkins/workspace/Test' 
             sh 'docker build -t mapserver1:1.0 . -f /var/lib/jenkins/workspace/Test'
             sh 'docker-compose build'
