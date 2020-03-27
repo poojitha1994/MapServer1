@@ -185,6 +185,7 @@ ADD  ./Data/$file_pbf   /home/renderer/src/Data/
 # Start running
 COPY run.sh /
 COPY indexes.sql /
+RUN chmod +x run.sh
 ENTRYPOINT ["/run.sh"]
 CMD []
 
