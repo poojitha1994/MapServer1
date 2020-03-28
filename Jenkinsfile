@@ -1,5 +1,5 @@
 node {
-    def app
+    agent any
   
   
       stage('Stage1') {
