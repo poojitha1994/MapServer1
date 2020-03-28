@@ -1,6 +1,6 @@
 node {
    
-  
+  agent any
   
       stage('Stage1') {
          
