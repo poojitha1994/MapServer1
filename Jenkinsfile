@@ -8,7 +8,7 @@ node {
             sh 'whoami'
             sh 'cd /var/lib/jenkins/workspace/Mapserverdocker'
             sh 'ls /var/lib/jenkins/workspace/Mapserverdocker' 
-            sh 'docker build -t mapserver1:latest . -f /var/lib/jenkins/workspace/Mapserverdocker/Dockerfile'
+            sh 'docker build -t mapserver1:latest . '
             sh 'docker-compose build'
       }
    stage('Stage 2'){
