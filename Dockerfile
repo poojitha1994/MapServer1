@@ -179,7 +179,8 @@ CMD file_pbf=$(find Data/  -name "*.osm.pbf" -printf "%f\n")
 
 #move the data files to the container
 RUN mkdir /home/renderer/src/Data \
-&& cd /home/renderer/src/Data && \ wget https://download.geofabrik.de/asia/malaysia-singapore-brunei-latest.osm.pbf
+&& cd /home/renderer/src/Data \
+&& wget https://download.geofabrik.de/asia/malaysia-singapore-brunei-latest.osm.pbf
 
 #ADD  ./Data/$file_pbf   /home/renderer/src/Data/
 
