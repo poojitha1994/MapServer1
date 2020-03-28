@@ -92,7 +92,7 @@ RUN wget http://download.osgeo.org/postgis/source/postgis-3.0.0.tar.gz -O postgi
 
 # Set up renderer user
 RUN adduser --disabled-password --gecos "" renderer
-
+RUN sudo su renderer
 # Install latest osm2pgsql
 RUN mkdir -p /home/renderer/src \
  && cd /home/renderer/src \
@@ -178,8 +178,10 @@ RUN mkdir -p /home/renderer/src \
 CMD file_pbf=$(find Data/  -name "*.osm.pbf" -printf "%f\n")
 
 #move the data files to the container
-RUN mkdir /home/renderer/src/Data
-ADD  ./Data/$file_pbf   /home/renderer/src/Data/
+RUN mkdir /home/renderer/src/Data \
+&& cd /home/renderer/src/Data && \ wget https://download.geofabrik.de/asia/malaysia-singapore-brunei-latest.osm.pbf
+
+#ADD  ./Data/$file_pbf   /home/renderer/src/Data/
 
 
 # Start running
