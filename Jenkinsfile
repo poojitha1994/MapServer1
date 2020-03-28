@@ -15,10 +15,12 @@ pipeline {
       }
    stage('Stage 2'){
       steps{
+         script{
            docker.withRegistry('https://505096120716.dkr.ecr.ap-southeast-1.amazonaws.com', 'ecr:ap-southeast-1:ecr-credentials') {
                    sh "docker push 505096120716.dkr.ecr.ap-southeast-1.amazonaws.com/mapserver:latest"
                          }
          
+      }
       }
    }
    }
