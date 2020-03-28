@@ -33,7 +33,7 @@ function setPostgresPassword() {
     sudo -u postgres psql -d gis -c "ALTER TABLE spatial_ref_sys OWNER TO renderer;"
     setPostgresPassword
 # Import data
-     sudo -u renderer osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script /home/renderer/src/openstreetmap-carto/openstreetmap-carto.lua ${OSM2PGSQL_EXTRA_ARGS} -S /home/renderer/src/openstreetmap-carto/openstreetmap-carto.style /home/renderer/src/Data/$osm_data_file
+     sudo -u renderer osm2pgsql -d gis --create --slim -G --hstore --tag-transform-script /home/renderer/src/openstreetmap-carto/openstreetmap-carto.lua -C 2500 --number-processes 1 -S /home/renderer/src/openstreetmap-carto/openstreetmap-carto.style /home/renderer/src/Data/$osm_data_file
 # Create indexes
     sudo -u postgres psql -d gis -f indexes.sql
 # Register that data has changed for mod_tile caching purposes
