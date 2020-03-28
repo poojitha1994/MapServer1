@@ -18,7 +18,9 @@ pipeline {
          script{
            docker.withRegistry('https://505096120716.dkr.ecr.ap-southeast-1.amazonaws.com', 'ecr:ap-southeast-1:ecr-credentials') {
                   // sh "docker push 505096120716.dkr.ecr.ap-southeast-1.amazonaws.com/mapserver:latest"
-              docker.image('openstreetmap:latest').push()
+              //docker.image('openstreetmap:latest').push()
+              sh "docker tag openstreetmap:latest 505096120716.dkr.ecr.ap-southeast-1.amazonaws.com/mapserver:latest"
+              sh "docker push 505096120716.dkr.ecr.ap-southeast-1.amazonaws.com/mapserver:latest"
                          }
          
       }
