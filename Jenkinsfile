@@ -2,7 +2,7 @@ pipeline {
    
   agent any
    stages{
-      stage('Stage1') {
+      stage('Create Image') {
          steps{
          
             echo 'Hello World'
@@ -13,7 +13,7 @@ pipeline {
             sh 'docker-compose build'
       }
       }
-   stage('Stage 2'){
+   stage('Push Image to AWS ECR'){
       steps{
          script{
            docker.withRegistry('https://505096120716.dkr.ecr.ap-southeast-1.amazonaws.com', 'ecr:ap-southeast-1:ecr-credentials') {
@@ -24,6 +24,7 @@ pipeline {
                          }
          
       }
+
       }
    }
    }
