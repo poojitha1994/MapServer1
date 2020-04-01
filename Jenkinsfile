@@ -30,8 +30,19 @@ pipeline {
    }
    }
        post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        success {
+            emailext (
+                to: poojithars34@gmail.com,
+                subject: "SUCCESS",
+                body: "SUCCESS!"
+            )
+        }
+        failure {
+			emailext (
+                to: poojithars34@gmail.com,
+                subject: "FAILURE",
+                body: "FAILURE!"
+            )
         }
     }
 }
