@@ -2,7 +2,7 @@ pipeline {
    
   agent any
    stages{
-      stage('Create Image') {
+      stage('Build') {
          steps{
          
             echo 'Hello World'
