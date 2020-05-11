@@ -7,7 +7,7 @@ pipeline {
          
             echo 'Building Docker image for mapserver'
             sh 'whoami'
-            sh'chmod -R 777 /var/lib/jenkins/workspace/OSM_MapServer'
+            sh 'chmod -R 777 /var/lib/jenkins/workspace/OSM_MapServer'
             sh 'cd /var/lib/jenkins/workspace/OSM_MapServer'
             sh 'ls /var/lib/jenkins/workspace/OSM_MapServer' 
             sh 'docker build -t openstreetmap:${BUILD_NUMBER} . -f /var/lib/jenkins/workspace/OSM_MapServer/Dockerfile'
