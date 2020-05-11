@@ -65,7 +65,11 @@ pipeline {
 
          }
       }
-
+stage('Slack Notification'){
+            steps{
+                slackSend channel: 'U010CRSPF9R', message: 'From jenkins, Batch job completed'
+            }
+        }
 
    }
 }
