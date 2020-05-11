@@ -14,7 +14,7 @@ pipeline {
            
       }
       }
-   stage('Push Image to AWS ECR'){
+  /* stage('Push Image to AWS ECR'){
       steps{
          script{
            docker.withRegistry('https://505096120716.dkr.ecr.ap-southeast-1.amazonaws.com', 'ecr:ap-southeast-1:ecr-credentials') {
@@ -28,7 +28,17 @@ pipeline {
 
       }
       
-   }
+   }*/
+      stage('Push to ECR'){
+         steps{
+            echo 'push image to ecr'
+          //sh 'docker login https://505096120716.dkr.ecr.ap-southeast-1.amazonaws.com'
+          
+            sh '''echo $(aws ecr get-authorization-token --region ap-southeast-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d | cut -d: -f2) | docker login -u AWS https://505096120716.dkr.ecr.ap-southeast-1.amazonaws.com --password-stdin''' 
+           sh  'docker tag openstreetmap:${BUILD_NUMBER} 505096120716.dkr.ecr.ap-southeast-1.amazonaws.com/mapserver:${BUILD_NUMBER}'
+           sh ' docker push 505096120716.dkr.ecr.ap-southeast-1.amazonaws.com/mapserver:${BUILD_NUMBER}'
+         }
+      }
   stage('Scan Docker images'){
          steps{
         
